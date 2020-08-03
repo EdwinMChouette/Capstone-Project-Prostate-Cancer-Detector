@@ -18,9 +18,10 @@ class load_csv(Dataset):
     
     def __getitem__(self, index):
         img_path = os.path.join(self.root_dir, self.annotations.iloc[index, 0])
-        image = torch.from_numpy(tiff.imread(img_path))
+        image = torch.from_numpy(tiff.imread(img_path)).permute(2,0,1).float()
         #Image.MAX_IMAGE_PIXELS = None
                 
+        '''
         train_transform = transforms.Compose([transforms.RandomRotation(30),
                                               transforms.RandomResizedCrop(224),
                                               transforms.ToPILImage(),
@@ -28,7 +29,8 @@ class load_csv(Dataset):
                                               transforms.ToTensor(),
                                               transforms.Normalize([0.485, 0.456, 0.406],
                                                                    [0.229, 0.224, 0.225])])
-        image.transform = train_transform
+        '''
+        image.transform = transforms.RandomResizedCrop(224)
         
         y_label = torch.tensor(int(self.annotations.iloc[index, 1]))
         
