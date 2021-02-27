@@ -1,4 +1,4 @@
-# Capstone-Project-Pancreatic-Cancer-Detector
+# Capstone-Project-Prostate-Cancer-Detector
 
 This project is from a Kaggle challenge. Information and data for this challenge (and therefore this project) can be found in the following link:
 
